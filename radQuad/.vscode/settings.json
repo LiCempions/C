@@ -1,0 +1,11 @@
+{
+    "makefile.makefilePath": "..\\makefile",
+    "makefile.makePath": "C:\\MinGW\\bin\\mingw32-make.exe",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\nuvol\\Universit�\\Programmazione\\C\\radQuad",
+            "binaryPath": "c:\\Users\\nuvol\\Universit�\\Programmazione\\C\\radQuad\\main",
+            "binaryArgs": []
+        }
+    ]
+}
