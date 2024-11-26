@@ -1,8 +1,10 @@
+currentDir = puntatori
+
 make all:
 make run:
 	cls
-	main.exe
+	$(currentDir)/main.exe
 
 make build:
 	cls
-	gcc *.c -o main
+	gcc $(currentDir)/*.c -o $(currentDir)/main
