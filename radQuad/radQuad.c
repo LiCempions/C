@@ -27,7 +27,6 @@ int main(){
     float x;
 
     printf("Started!\n");
-    printf("Radice quadrata di ", sqrt(x, 5));
     scanf("%f", &x);
     printf("Radice di %f = %f", x, sqrt(x, 5));
 }
