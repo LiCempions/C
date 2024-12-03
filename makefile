@@ -1,4 +1,4 @@
-currentDir = puntatori
+currentDir = listemiste
 
 make all:
 make run:
