@@ -111,7 +111,7 @@ dyn_list pop(dyn_list L){
 
         if (L.n <= L.c/4){
             L.c = L.c/2;
-            realloc(L.arr, L.c * sizeof(element));
+            L.arr = realloc(L.arr, L.c * sizeof(element));
         }
         // lasciamo sempre una capacità almeno doppia alla dimensione
     }
@@ -122,7 +122,7 @@ dyn_list drop(dyn_list L, int index){
     if ( index>=0 && index<L.n){        // se l'indice fornito è legale
         if (L.arr[index].type != 's')   // se non è tipo stringa, libera la memoria
             free(L.arr[index].addr);
-
+        
         while (index < L.n - 1){        // scala di 1 indietro gli elementi prima dell'ultimo
             L.arr[index] = L.arr[index+1];
             index++;
@@ -131,7 +131,7 @@ dyn_list drop(dyn_list L, int index){
         L.n--;                          // diminuisci la dimensione
         if (L.n <= L.c/4){              // dealloca memeoria se la dimensione è molto ridotta
             L.c = L.c/2;
-            realloc(L.arr, L.c * sizeof(element));
+            L.arr = realloc(L.arr, L.c * sizeof(element));
         }
     }
     return L;
