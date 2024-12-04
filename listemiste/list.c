@@ -15,7 +15,7 @@ typedef struct {
 dyn_list init_list();
 dyn_list append(dyn_list, element);
 dyn_list pop(dyn_list);
-dyn_list burst(dyn_list, int);
+dyn_list drop(dyn_list, int);
 element intElement(int);
 element floatElement(float);
 element charElement(char);
@@ -46,7 +46,7 @@ int main(){
     
     printList(lista);
 
-    lista = burst(lista, 1);
+    lista = drop(lista, 1);
     printList(lista);
 
     return 0;
@@ -118,7 +118,7 @@ dyn_list pop(dyn_list L){
     return L;
 }
 
-dyn_list burst(dyn_list L, int index){
+dyn_list drop(dyn_list L, int index){
     if ( index>=0 && index<L.n){        // se l'indice fornito è legale
         if (L.arr[index].type != 's')   // se non è tipo stringa, libera la memoria
             free(L.arr[index].addr);
