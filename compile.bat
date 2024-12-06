@@ -10,6 +10,6 @@ cd .\%folder%
 call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" arm64
 cl "%filename%.c"
 
-if %3==pause (
-    PAUSE
-)
+del %filename%.obj
+
+if %3=="pause" ( PAUSE )
