@@ -115,6 +115,26 @@ dyn_list append(dyn_list L, element e){
     return L;
 }
 
+dyn_list insert(dyn_list L, element e, int index){
+    L = append(L, e);
+
+    for (int i = L.n-1; i>index && i>0; i--){   // && i>0: se index<0 l'elemento viene messo in testa all'array
+        L.arr[i] = L.arr[i-1];
+        L.arr[i-1] = e;         // In questo modo non abbiamo bisogno di aggiungere un altro if
+    }
+
+    /*
+    questo non serve
+
+    if ( index<L.n && index>=0 ){
+        L.arr[index] = e
+    }
+    */
+
+   return L;
+}
+
+
 dyn_list pop(dyn_list L){
     if ( L.n>0 ){       // se l'array contiene elementi
         if (L.arr[L.n-1].type != 's')
