@@ -132,7 +132,7 @@ dyn_list pop(dyn_list L){
     return L;
 }
 
-dyn_list drop(dyn_list L, int index){
+dyn_list dropExNovo(dyn_list L, int index){
     if ( index>=0 && index<L.n){        // se l'indice fornito è legale
         if (L.arr[index].type != 's')   // se non è tipo stringa, libera la memoria
             free(L.arr[index].addr);
@@ -150,6 +150,17 @@ dyn_list drop(dyn_list L, int index){
     }
     return L;
 }
+
+dyn_list drop(dyn_list L, int index){
+    int i;
+    for ( i=index; i<L.n-2; i++ ){
+        L.arr[i] = L.arr[i+1];
+    }
+    L = pop(L);
+
+    return L;
+}
+
 
 void appendByPointer(dyn_list* L, element e){
     if ((*L).c == (*L).n){
