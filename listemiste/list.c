@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+/* typedefs lista */
+
 typedef struct {
     char type; // 'i' intero, 'f' float, 'c' char, 's' stringa
     void* addr;
@@ -12,10 +14,17 @@ typedef struct {
     int c; // capacità
 } dyn_list;
 
+/* decl funzioni lista */
+
 dyn_list init_list();
 dyn_list append(dyn_list, element);
+dyn_list insert(dyn_list, element, int);
 dyn_list pop(dyn_list);
-dyn_list drop(dyn_list, int);
+dyn_list dropExNovo(dyn_list, int);
+dyn_list drop(dyn_list L, int index);
+
+/* decl creazione elementi */
+
 element intElement(int);
 element floatElement(float);
 element charElement(char);
@@ -52,6 +61,8 @@ int main(){
     return 0;
 }
 
+/* creazione elementi */
+
 element intElement(int number){
     element e = {'i', NULL};
     e.addr = malloc(sizeof(int));
@@ -83,12 +94,15 @@ element stringElement(char* string){
     return e;
 }
 
+/* funzioni lista */
+
 dyn_list init_list(){
     dyn_list lista_vuota = {NULL, 0, 1};
     lista_vuota.arr = malloc( sizeof(element) );
 
     return lista_vuota;
 }
+
 
 dyn_list append(dyn_list L, element e){
     if (L.c == L.n){    // se la dimensione sta per superare la capacità, alloca più memoria
@@ -145,6 +159,7 @@ void appendByPointer(dyn_list* L, element e){
     (*L).arr[(*L).n] = e;
     (*L).n++;
 }
+
 
 void printList(dyn_list L){
     printf("\nElementi: %d, capacita': %d\n", L.n, L.c);
