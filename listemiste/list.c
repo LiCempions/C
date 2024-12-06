@@ -4,7 +4,7 @@
 /* typedefs lista */
 
 typedef struct {
-    char type; // 'i' intero, 'f' float, 'c' char, 's' stringa
+    char type; // 'd' intero, 'f' float, 'c' char, 's' stringa
     void* addr;
 } element;
 
@@ -86,7 +86,7 @@ int main1(){
 /* creazione elementi */
 
 element intElement(int number){
-    element e = {'i', NULL};
+    element e = {'d', NULL};
     e.addr = malloc(sizeof(int));
     *((int*)e.addr) = number;
 
@@ -220,7 +220,7 @@ void printList(dyn_list L){
         printf("-----\nRilevato '%c' in posizione %d\n", L.arr[i].type, i);
 
         switch (L.arr[i].type){
-        case 'i':
+        case 'd':
             printf("%d\n", *((int*)L.arr[i].addr));
             // con (int*) forniamo all'operatore * il tipo di dato
             // (segnato void nella struct)
