@@ -31,8 +31,30 @@ element charElement(char);
 element stringElement(char*);
 void printList(dyn_list);
 
+/* decl input */
+
+char parseBuffer(char*);
+
+/* main */
 
 int main(){
+    char buffer[1024];
+    int t, n;
+    char* format = "Formato rilevato: n";
+
+    printf("Inserisci qualunque cosa: ");
+    scanf("%s", &buffer);
+
+    // per individuare il tipo di input esaminiamo il buffer
+    format[18] = parseBuffer(buffer);
+    printf(format);
+
+    return 0;
+}
+
+/* test funzioni lista */
+
+int main1(){
     dyn_list lista = init_list();
     lista = append(lista, intElement(10));
     // intElement crea un elemento (gianni) che punta a 10 e passa questo elemento a append
@@ -223,4 +245,27 @@ void printList(dyn_list L){
         }
     }
     printf("===================\n\n");
+}
+
+
+/* ----- input ----- */
+
+char parseBuffer(char* string){
+    int i;
+    int foundOneDot = 0;
+
+    for (i=0; string[i] != '\0'; i++){
+        if ( string[i]=='.' ){
+            if (foundOneDot) // 0 viene interpretato come false, ogni altro valore come true
+                return 's';
+            else
+                foundOneDot = 1;
+
+        } else {
+            if ( (string[i]<'0' || string[i]>'9') && !(string[i]=='-' && i==0) )
+                return 's';
+        }
+    }
+
+    return (foundOneDot) ? 'f' : 'd';
 }
