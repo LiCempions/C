@@ -82,7 +82,7 @@ int main(){
             // Negli elementi stringa viene salvato l'indirizzo del buffer,
             // ma il buffer viene modificato ogni volta
             toAppend = stringElement(
-                malloc( strlen(buffer)*sizeof(char) )
+                malloc( strnlen(buffer, 1024)*sizeof(char) )
                 );
             if ((char*)toAppend.addr==NULL){ // se malloc fallisce ripeti l'ultima iterazione
                 printf("Salvataggio input fallito, riprova\n");
