@@ -238,9 +238,12 @@ dyn_list dropExNovo(dyn_list L, int index){
 
 dyn_list drop(dyn_list L, int index){
     int i;
+    element tmp = L.arr[index];
+
     for ( i=index; i<L.n-2; i++ ){
         L.arr[i] = L.arr[i+1];
     }
+    L.arr[L.n-1] = tmp;
     L = pop(L);
 
     return L;
