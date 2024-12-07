@@ -90,7 +90,7 @@ int main(){
                 continue;
             }
 
-            strcpy((char*)toAppend.addr, buffer);
+            strncpy((char*)toAppend.addr, buffer, 1024);
             strings = append(strings, toAppend);
             // questa lista contiene gli indirizzi di tutte le stringhe salvate, nel caso fossero rimosse dall'altra lista
             break;
