@@ -37,9 +37,8 @@ char parseBuffer(char*);
 
 /* main */
 
-int main0(){
-    char buffer[1024];
-    char bufferT;
+int main(){
+    char buffer[1024], bufferT;
     char* format = "% ";
     dyn_list mixList;
 
