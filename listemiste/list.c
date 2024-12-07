@@ -40,6 +40,7 @@ char parseBuffer(char*);
 int main(){
     char buffer[1024], bufferT;
     char* format = "% ";
+    int i, success = 0, elementNum;
     dyn_list mixList;
 
     int intInp;
@@ -48,10 +49,15 @@ int main(){
     element toAppend;
 
     mixList = init_list();
-    printf("Inserisci qualunque cosa o non inserire nulla per visualizzare la lista creata: ");
 
+    printf("Digita il numero di elementi da aggiungere alla lista: ");
+    while (success!=1)
+        success = scanf("5d", &elementNum);
+
+    printf("Inserisci qualunque cosa: ");
     scanf("%s", &buffer);
-    while ( buffer[0]!='\0' ){
+
+    for (i=0; i<elementNum; i++){
         bufferT = parseBuffer(buffer);  // per individuare il tipo di input esaminiamo il buffer
         format[1] = bufferT;
         
@@ -77,7 +83,7 @@ int main(){
 
         mixList = append(mixList, toAppend);
 
-        printf("Inserisci il prossimo valore, o lascia vuoto per visualizzare la lista: ");
+        printf("Inserisci il prossimo valore: ");
         scanf("%s", &buffer);
     }
 
