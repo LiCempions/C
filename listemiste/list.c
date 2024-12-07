@@ -81,9 +81,16 @@ int main(){
         case 's':
             // Negli elementi stringa viene salvato l'indirizzo del buffer,
             // ma il buffer viene modificato ogni volta
-            toAppend = stringElement( malloc( strlen(buffer)*sizeof(char) ) );
-            strcpy((char*)toAppend.addr, buffer);
+            toAppend = stringElement(
+                malloc( strlen(buffer)*sizeof(char) )
+                );
+            if ((char*)toAppend.addr==NULL){ // se malloc fallisce ripeti l'ultima iterazione
+                printf("Salvataggio input fallito, riprova\n");
+                i--;
+                continue;
+            }
 
+            strcpy((char*)toAppend.addr, buffer);
             strings = append(strings, toAppend);
             // questa lista contiene gli indirizzi di tutte le stringhe salvate, nel caso fossero rimosse dall'altra lista
             break;
