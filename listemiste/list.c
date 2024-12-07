@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 /* typedefs lista */
 
@@ -42,13 +43,14 @@ int main(){
     char* format = "% ";
     int i, success = 0, elementNum;
     dyn_list mixList;
+    dyn_list strings;
 
     int intInp;
     float floatInp;
-    char* strInp;
     element toAppend;
 
     mixList = init_list();
+    strings = init_list();
 
     printf("Digita il numero di elementi da aggiungere alla lista: ");
     while (success!=1){
@@ -77,7 +79,13 @@ int main(){
             break;
         
         case 's':
-            toAppend = stringElement(buffer);
+            // Negli elementi stringa viene salvato l'indirizzo del buffer,
+            // ma il buffer viene modificato ogni volta
+            toAppend = stringElement( malloc( strlen(buffer)*sizeof(char) ) );
+            strcpy((char*)toAppend.addr, buffer);
+
+            strings = append(strings, toAppend);
+            // questa lista contiene gli indirizzi di tutte le stringhe salvate, nel caso fossero rimosse dall'altra lista
             break;
         
         default:
@@ -89,6 +97,8 @@ int main(){
     }
 
     printList(mixList);
+    printf("============\nLista delle stringhe:\n");
+    printList(strings);
 
     return 0;
 }
