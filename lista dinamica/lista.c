@@ -25,7 +25,7 @@ lista_f init_list(){
 lista_f append(lista_f L, float e){
     if (L.c == L.n){
         L.c = 2*L.c;
-        L.arr = realloc(L.arr, L.c);
+        L.arr = realloc(L.arr, L.c*sizeof(float));
     }
     L.arr[L.n] = e;
     L.n++;
