@@ -37,17 +37,51 @@ char parseBuffer(char*);
 
 /* main */
 
-int main(){
+int main0(){
     char buffer[1024];
-    int t, n;
-    char* format = "Formato rilevato: n";
+    char bufferT;
+    char* format = "% ";
+    dyn_list mixList;
 
-    printf("Inserisci qualunque cosa: ");
+    int intInp;
+    float floatInp;
+    char* strInp;
+    element toAppend;
+
+    mixList = init_list();
+    printf("Inserisci qualunque cosa o non inserire nulla per visualizzare la lista creata: ");
+
     scanf("%s", &buffer);
+    while ( buffer[0]!='\0' ){
+        bufferT = parseBuffer(buffer);  // per individuare il tipo di input esaminiamo il buffer
+        format[1] = bufferT;
+        
+        switch (bufferT){
+        case 'd':
+            sscanf(buffer, format, &intInp);
+            toAppend = intElement(intInp);
+            break;
 
-    // per individuare il tipo di input esaminiamo il buffer
-    format[18] = parseBuffer(buffer);
-    printf(format);
+        case 'f':
+            sscanf(buffer, format, &floatInp);
+            toAppend = floatElement(floatInp);
+            break;
+        
+        case 's':
+            toAppend = stringElement(buffer);
+            break;
+        
+        default:
+            printf("Tipologia input non riconosciuta, terminazione programma...\n");
+            return -1;
+        }
+
+        mixList = append(mixList, toAppend);
+
+        scanf("%s", &buffer);
+    }
+
+    printList(mixList);
 
     return 0;
 }
