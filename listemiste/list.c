@@ -51,8 +51,11 @@ int main(){
     mixList = init_list();
 
     printf("Digita il numero di elementi da aggiungere alla lista: ");
-    while (success!=1)
+    while (success!=1){
         success = scanf("5d", &elementNum);
+        if (success==0)
+            printf("Impossibile leggere il numero, riprova: ");
+    }
 
     printf("Inserisci qualunque cosa: ");
     scanf("%s", &buffer);
