@@ -261,6 +261,7 @@ void appendByPointer(dyn_list* L, element e){
 
 
 void printList(dyn_list L){
+    printf("\n===================\n");
     printf("\nElementi: %d, capacita': %d\n", L.n, L.c);
     for (int i = 0; i < L.n; i++){
         printf("-----\nRilevato '%c' in posizione %d\n", L.arr[i].type, i);
