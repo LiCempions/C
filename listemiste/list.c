@@ -78,6 +78,7 @@ int main0(){
 
         mixList = append(mixList, toAppend);
 
+        printf("Inserisci il prossimo valore, o lascia vuoto per visualizzare la lista: ");
         scanf("%s", &buffer);
     }
 
