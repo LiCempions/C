@@ -57,11 +57,12 @@ int main(){
             printf("Impossibile leggere il numero, riprova: ");
     }
 
-    printf("Inserisci qualunque cosa: ");
-    scanf("%s", &buffer);
 
     for (i=0; i<elementNum; i++){
+        printf("Inserisci qualunque cosa: ");
+        scanf("%s", buffer);
         bufferT = parseBuffer(buffer);  // per individuare il tipo di input esaminiamo il buffer
+        printf("Tipologia rilevata: %c\n", bufferT);
         format[1] = bufferT;
         
         switch (bufferT){
@@ -85,9 +86,6 @@ int main(){
         }
 
         mixList = append(mixList, toAppend);
-
-        printf("Inserisci il prossimo valore: ");
-        scanf("%s", &buffer);
     }
 
     printList(mixList);
