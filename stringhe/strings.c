@@ -4,7 +4,7 @@
 
 int str_len(char *a){
     int c = 0;
-    while (a[c] != 0){
+    while (a[c] != '\0'){
         c++;
     }
     return c;
@@ -47,6 +47,8 @@ int str_cmp(char* a, char* b){
     }
 }
 
+char* strclone(char*);
+
 int main(){
     char a[] = "una stringa";
     char b0[20];
@@ -63,4 +65,8 @@ int main(){
 
     Testare se a e b0 sono uguali come stringhe, non come array
     */
+}
+
+char* strclone(char* source){
+
 }
