@@ -312,6 +312,8 @@ char parseBuffer(char* string){
                 return 's';
         }
     }
+    if (string[0] == '\0')
+        return 's';
 
     return (foundOneDot) ? 'f' : 'd';
 }
