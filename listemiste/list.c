@@ -104,7 +104,7 @@ int main(){
     }
 
     printList(mixList);
-    printf("============\nLista delle stringhe:\n");
+    printf("\nLista delle stringhe:\n");
     printList(strings);
 
     return 0;
