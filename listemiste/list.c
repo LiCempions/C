@@ -2,8 +2,8 @@
 #include<stdlib.h>
 #include<string.h>
 
+#pragma region dichiarazioni
 /* typedefs lista */
-
 typedef struct {
     char type; // 'd' intero, 'f' float, 'c' char, 's' stringa
     void* addr;
@@ -16,7 +16,6 @@ typedef struct {
 } dyn_list;
 
 /* decl funzioni lista */
-
 dyn_list init_list();
 dyn_list append(dyn_list, element);
 dyn_list insert(dyn_list, element, int);
@@ -25,7 +24,6 @@ dyn_list dropExNovo(dyn_list, int);
 dyn_list drop(dyn_list L, int index);
 
 /* decl creazione elementi */
-
 element intElement(int);
 element floatElement(float);
 element charElement(char);
@@ -33,11 +31,11 @@ element stringElement(char*);
 void printList(dyn_list);
 
 /* decl input */
-
 char parseBuffer(char*);
 
-/* main */
+#pragma endregion dichiarazioni
 
+/* main */
 int main(){
     char buffer[1024], bufferT;
     char* format = "% ";
@@ -141,8 +139,16 @@ int main1(){
     return 0;
 }
 
-/* creazione elementi */
+#pragma region funzioni lista
 
+dyn_list init_list(){
+    dyn_list lista_vuota = {NULL, 0, 1};
+    lista_vuota.arr = malloc( sizeof(element) );
+
+    return lista_vuota;
+}
+
+/* creazione elementi */
 element intElement(int number){
     element e = {'d', NULL};
     e.addr = malloc(sizeof(int));
@@ -174,16 +180,7 @@ element stringElement(char* string){
     return e;
 }
 
-/* funzioni lista */
-
-dyn_list init_list(){
-    dyn_list lista_vuota = {NULL, 0, 1};
-    lista_vuota.arr = malloc( sizeof(element) );
-
-    return lista_vuota;
-}
-
-
+/* addizione */
 dyn_list append(dyn_list L, element e){
     if (L.c == L.n){    // se la dimensione sta per superare la capacità, alloca più memoria
         L.c = 2*L.c;
@@ -214,7 +211,16 @@ dyn_list insert(dyn_list L, element e, int index){
    return L;
 }
 
+void appendByPointer(dyn_list* L, element e){
+    if ((*L).c == (*L).n){
+        (*L).c = 2*(*L).c;
+        (*L).arr = realloc((*L).arr, (*L).c);
+    }
+    (*L).arr[(*L).n] = e;
+    (*L).n++;
+}
 
+/* rimozione */
 dyn_list pop(dyn_list L){
     if ( L.n>0 ){       // se l'array contiene elementi
         if (L.arr[L.n-1].type != 's')
@@ -264,17 +270,7 @@ dyn_list drop(dyn_list L, int index){
     return L;
 }
 
-
-void appendByPointer(dyn_list* L, element e){
-    if ((*L).c == (*L).n){
-        (*L).c = 2*(*L).c;
-        (*L).arr = realloc((*L).arr, (*L).c);
-    }
-    (*L).arr[(*L).n] = e;
-    (*L).n++;
-}
-
-
+/* miscellanea */
 void printList(dyn_list L){
     printf("\n===================\n");
     printf("\nElementi: %d, capacita': %d\n", L.n, L.c);
@@ -309,6 +305,7 @@ void printList(dyn_list L){
     printf("===================\n\n");
 }
 
+#pragma endregion
 
 /* ----- input ----- */
 
