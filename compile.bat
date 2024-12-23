@@ -1,4 +1,4 @@
-echo off
+@echo off
 set folder=%1
 set filename=%2
 if [%filename%]==[] (
