@@ -11,20 +11,20 @@ void mergeSort(char* str, const int from, const int to){
     if ( to-from<=2 ){
         if(to-from==2 && str[to-1]<str[from])
             chrSwap(str, to-1, from);
-        printf("Sorted %c and %c\n", str[from], str[to-1]);
+        // printf("Sorted %c and %c\n", str[from], str[to-1]);
         return;
 
 
     } else {
         half = (from+to)/2;
-        printf("Sorting from %c to %c\n", str[from], str[to-1]);
+        // printf("Sorting from %c to %c\n", str[from], str[to-1]);
         mergeSort(str, from, half);
         mergeSort(str, half, to);
-        printf("Back up\n");
+        // printf("Back up\n");
 
         i=from;
         j=half;
-        temp = malloc( (to-from)*sizeof(char) +1 ); // WARNING: string terminator not included;
+        temp = malloc( (to-from)*sizeof(char) /* +1 */ ); // WARNING: string terminator not included;
 
         while (i<half && j<to){
             if (str[i]<=str[j]){
@@ -48,9 +48,9 @@ void mergeSort(char* str, const int from, const int to){
             cursor++;
         }
 
-        temp[cursor] = '\0';
+        // temp[cursor] = '\0'; // WARNING: REQUIRES ADDING +1 TO MALLOC
 
-        printf("Temporary sorted string: %s\n", temp);
+        // printf("Temporary sorted string: %s\n", temp);
 
         for (cursor=0; cursor<to-from; cursor++)
             str[from+cursor] = temp[cursor];
