@@ -1,9 +1,9 @@
-int h(const char* key){
-    int h=0, i=0;
+int h(char* key){ // the address is copied in function calls
+    int h=0;
 
-    while (key[i] != '\0'){
-        h = h + key[i];
-        i++;
+    while (*key != '\0'){
+        h = h + *key;
+        key = key + sizeof(char);
     }
 
     return h;
