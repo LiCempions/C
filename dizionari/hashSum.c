@@ -1,9 +1,9 @@
 int h(char* key){
-    int h=0;
+    int h=0, i=0;
 
-    while (*key != '\0'){
-        h = h + *key;
-        key = key + sizeof(char);
+    while (key[i] != '\0'){
+        h = h + key[i];
+        i++;
     }
 
     return h;
