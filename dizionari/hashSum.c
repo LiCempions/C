@@ -1,4 +1,4 @@
-int h(char* key){
+int h(const char* key){
     int h=0, i=0;
 
     while (key[i] != '\0'){
