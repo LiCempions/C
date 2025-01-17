@@ -1,5 +1,5 @@
 @echo off
-if "%*"==[] goto :tutorial
+if [%*]==[] goto :tutorial
 
 set directory=%1
 if %directory:~0,1% neq \ set files=%* && goto :processFiles
