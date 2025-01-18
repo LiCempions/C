@@ -3,6 +3,7 @@
 
 /* Dict functions */
 
+/* Get address of subList address from key*/
 nodeList* getSubList(dict* d, const char* key){
     int hashed = h(key) % d->lArrSize;
     return d->listArray + hashed/* *sizeof(nodeList) */;
