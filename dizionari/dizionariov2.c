@@ -46,6 +46,7 @@ void dictPop(dict* d, const char* key){
     pop( subList, searchList(*subList, key) );
 }
 
+/* Get value from an element */
 int dictGet(dict* d, const char* key){
     return searchList( *getSubList(d, key), key )->value;
 }
