@@ -17,6 +17,8 @@ int main(){
     dictPop(&diz, "chiave0");
 
     printDict(&diz);
+    
+    printf("Valore in chiave1: %d", dictGet(&diz, "chiave1"));
 
     return 0;
 }

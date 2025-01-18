@@ -46,6 +46,10 @@ void dictPop(dict* d, const char* key){
     pop( subList, searchList(*subList, key) );
 }
 
+int dictGet(dict* d, const char* key){
+    return searchList( *getSubList(d, key), key )->value;
+}
+
 /* Print the contents of a dictionary */
 void printDict(dict* d){
     node* curr;
