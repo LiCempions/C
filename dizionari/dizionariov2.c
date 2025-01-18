@@ -59,6 +59,6 @@ void printDict(dict* d){
         printf("subList is %s", d->listArray[i]==NULL ? "empty\n" : "full\n" );
         for (curr=d->listArray[i]; curr!=NULL; curr = curr->next)
             printf("\tkey: %s, value: %d\n", curr->key, curr->value);
-        printf("\n");
     }
+    printf("\n");
 }
