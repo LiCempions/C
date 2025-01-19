@@ -64,12 +64,8 @@ nodeList push(nodeList list, float value){
     return newNode;
     // Insert node after, copy first to second and override first: many more pointer overrides
 }
-/* problem: can't inject in the last position */
 nodeList inject(nodeList L, node* at, float value){
-    if (at==NULL)
-        return L;
-    
-    node* prevNode = (at==NULL) ? NULL : at->prev;
+    node* prevNode = (at==NULL) ? getLast(L) : at->prev;
     node* newNode = push(at, value);
     newNode->prev = prevNode; // push is meant to insert at pos 0, so it set newNode->prev to NULL
     if (prevNode==NULL){
