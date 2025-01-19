@@ -104,7 +104,7 @@ void dropAt(nodeList* L, int index){
 void printNList(nodeList* L){
     node* curr = *L; // L è l'indirizzo del primo nodo
 
-    printf("\n==============\nValori lista a nodi:\t");
+    printf("\n==============\nValori lista a nodi:\n\t");
     while (curr!=NULL) {
         printf(" %.2f -o-", curr->data);
         curr = curr->next;

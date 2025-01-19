@@ -100,7 +100,7 @@ nodeList dropAt(nodeList L, int index){
 void printNList(nodeList L){
     node* curr = L; // L è l'indirizzo del primo nodo
 
-    printf("\n==============\nValori lista a nodi:\t");
+    printf("\n==============\nValori lista a nodi:\n\t");
     while (curr!=NULL) {
         printf(" %.2f -o-", curr->data);
         curr = curr->next;
@@ -111,7 +111,7 @@ void printNList(nodeList L){
 void printNListRvrs(nodeList L){
     node* curr = getLast(L); // L è l'indirizzo del primo nodo
 
-    printf("\n==============\nValori lista a nodi (rovesciata):\t");
+    printf("\n==============\nValori lista a nodi (rovesciata):\n\t");
     while (curr!=NULL) {
         printf(" %.2f -o-", curr->data);
         curr = curr->prev;
