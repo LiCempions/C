@@ -22,11 +22,15 @@ node* searchList(nodeList, float);
 /* Get the address of a node by index */
 /* Will return NULL if the index is out of range or the first node if the index is negative */
 node* getNode(nodeList, int);
+/* Get the last node of the list */
+/* Will return NULL if the list is empty */
+node* getLast(nodeList);
+
 
 /* Add a node at the beginning of the list */
 nodeList push(nodeList, float);
 /* Add a node before the one pointed by "at" */
-/* Problem: can't inject in the last position */
+/* Will add the node at the end if "at" is NULL */
 nodeList inject(nodeList, node*, float);
 /* Add a node before the one containing "value" */
 nodeList injectThe(nodeList L, float, float);
