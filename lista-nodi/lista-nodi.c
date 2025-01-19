@@ -24,12 +24,10 @@ int main(){
     return 0;
 }
 
-/* Initialize node list (useless) */
 nodeList initList(){
     return NULL;
 }
 
-/* Find first node with value */
 node* searchList(nodeList L, float key){
     node* curr=L;
     while (curr!=NULL && curr->data!=key)
@@ -37,7 +35,6 @@ node* searchList(nodeList L, float key){
     
     return curr;
 }
-/* Get node by index */
 node* getNode(nodeList L, int index){
     int i;
     node* curr;
@@ -46,7 +43,6 @@ node* getNode(nodeList L, int index){
 
     return curr;
 }
-/* Get last node */
 node* getLast(nodeList L){
     if (L==NULL)
         return L;
@@ -57,7 +53,6 @@ node* getLast(nodeList L){
     return L;
 }
 
-/* Add a node in front */
 nodeList push(nodeList list, float value){
     node* newNode = malloc(sizeof(node));
     newNode->data = value;
@@ -69,7 +64,6 @@ nodeList push(nodeList list, float value){
     return newNode;
     // Insert node after, copy first to second and override first: many more pointer overrides
 }
-/* Add a node before another */
 nodeList inject(nodeList L, node* at, float value){
     node* prevNode = (at==NULL) ? getLast(L) : at->prev;
     node* newNode = push(at, value);
@@ -81,18 +75,15 @@ nodeList inject(nodeList L, node* at, float value){
         return L;                   // the address of the first node did not change
     }
 }
-/* Add a node before the first with value */
 nodeList injectThe(nodeList L, float key, float value){
     node* at = searchList(L, key);
     return inject(L, at, value);
 }
-/* Add a node at index */
 nodeList injectAt(nodeList L, int index, float value){
     node* at = getNode(L, index);
     return inject(L, at, value);
 }
 
-/* Remove first node */
 nodeList chop(nodeList L){
     if (L==NULL)
         return NULL;
@@ -105,7 +96,6 @@ nodeList chop(nodeList L){
 
     return choppedL;
 }
-/* Remove a node */
 nodeList dropNode(nodeList L, node* node){
     if (node == NULL)
         return L;
@@ -117,18 +107,15 @@ nodeList dropNode(nodeList L, node* node){
     
     return (node->prev==NULL) ? node : L;
 }
-/* Remove first node found with value */
 nodeList dropThe(nodeList L, float key){
     node* node = searchList(L, key);
     return dropNode(L, node);
 }
-/* Remove node by index */
 nodeList dropAt(nodeList L, int index){
     node* node = getNode(L, index);
     return dropNode(L, node);
 }
 
-/* Print all the values in the list */
 void printNList(nodeList L){
     node* curr = L; // L è l'indirizzo del primo nodo
 
