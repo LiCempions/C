@@ -43,6 +43,15 @@ node* getNode(nodeList L, int index){
 
     return curr;
 }
+node* getLast(nodeList L){
+    if (L==NULL)
+        return L;
+    
+    while (L->next!=NULL)
+        L = L->next;
+    
+    return L;
+}
 
 nodeList push(nodeList list, float value){
     node* newNode = malloc(sizeof(node));
