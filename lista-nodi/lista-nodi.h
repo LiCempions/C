@@ -13,7 +13,7 @@ typedef node* nodeList;
 
 /* ----- methods ----- */
 
-/* Initialize the node list */
+/* Initialize the node list (useless) */
 nodeList initList();
 
 /* Get the address of the first node containing "key" */
