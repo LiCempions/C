@@ -99,8 +99,8 @@ void printNList(nodeList L){
 
     printf("\n==============\nValori lista a nodi:\t");
     while (curr!=NULL) {
-        printf(" %.2f -o-o-o-", curr->data);
+        printf(" %.2f -o-", curr->data);
         curr = curr->next;
     }
-    printf("o_\n");
+    printf("_\n");
 }
