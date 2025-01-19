@@ -107,3 +107,14 @@ void printNList(nodeList L){
     }
     printf("_\n");
 }
+
+void printNListRvrs(nodeList L){
+    node* curr = getLast(L); // L è l'indirizzo del primo nodo
+
+    printf("\n==============\nValori lista a nodi (rovesciata):\t");
+    while (curr!=NULL) {
+        printf(" %.2f -o-", curr->data);
+        curr = curr->prev;
+    }
+    printf("_\n");
+}

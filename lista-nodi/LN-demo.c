@@ -17,12 +17,14 @@ int main(){
     lista = injectThe(lista, 0.1, 0.5);
 
     printNList(lista);
+    printNListRvrs(lista);
 
     lista = chop(lista);
     lista = dropThe(lista, 7.8);
     lista = dropAt(lista, 1);
 
     printNList(lista);
+    printNListRvrs(lista);
 
     node = getNode(lista, -1);
     if (node!=NULL)

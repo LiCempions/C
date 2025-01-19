@@ -48,3 +48,6 @@ nodeList dropAt(nodeList, int);
 
 /* Print the value of each node to the standard output */
 void printNList(nodeList);
+
+/* Print the value of each node to the standard output in reverse order */
+void printNListRvrs(nodeList);
