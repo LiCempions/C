@@ -74,16 +74,19 @@ nodeList chop(nodeList L){
 
     return choppedL;
 }
-nodeList dropNode(nodeList L, node* node){
-    if (node == NULL)
+nodeList dropNode(nodeList L, node* drop){
+    if (drop == NULL)
         return L;
     
-    if (node->prev!=NULL)
-        node->prev = chop(node);
-    else
-        node = chop(node);
+    node* nextNode = drop->next;
+    node* prevNode = drop->prev;
     
-    return (node->prev==NULL) ? node : L;
+    if (prevNode!=NULL){
+        prevNode->next = chop(drop);
+        nextNode->prev = prevNode;
+        return L;
+    } else
+        return chop(drop);
 }
 nodeList dropThe(nodeList L, float key){
     node* node = searchList(L, key);
