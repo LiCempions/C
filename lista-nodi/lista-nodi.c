@@ -120,10 +120,9 @@ void printNList(nodeList L){
     node* curr = L; // L è l'indirizzo del primo nodo
 
     printf("\n==============\nValori lista a nodi:\t");
-    do {
-        printf("%.2f\t", curr->data);
+    while (curr!=NULL) {
+        printf(" %.2f -o-o-o-", curr->data);
         curr = curr->next;
-    } while (curr!=NULL);
-
-    printf("\n");
+    }
+    printf("o_\n");
 }
